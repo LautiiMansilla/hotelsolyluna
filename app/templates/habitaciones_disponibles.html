@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block title %}
+Habitaciones Disponibles
+{% endblock %}
+
+{% block content %}
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Número de Habitación</th>
+            <th>Tipo</th>
+            <th>Capacidad (Personas)</th>
+            <th>Estado</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for habitacion in habitaciones %}
+        <tr>
+            <td>{{ habitacion.numero }}</td>
+            <td>{{ habitacion.tipo }}</td>
+            <td>{{ habitacion.capacidad }}</td>
+            <td>{{ habitacion.estado }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}

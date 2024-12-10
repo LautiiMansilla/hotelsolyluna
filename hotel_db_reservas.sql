@@ -1,0 +1,60 @@
+-- MySQL dump 10.13  Distrib 8.0.22, for Win64 (x86_64)
+--
+-- Host: localhost    Database: hotel_db
+-- ------------------------------------------------------
+-- Server version	8.0.39
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!50503 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `reservas`
+--
+
+DROP TABLE IF EXISTS `reservas`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `reservas` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `cliente_id` int NOT NULL,
+  `habitacion_id` int NOT NULL,
+  `fecha_inicio` datetime NOT NULL,
+  `fecha_fin` datetime NOT NULL,
+  `fecha_reserva` datetime DEFAULT CURRENT_TIMESTAMP,
+  `estado` varchar(20) DEFAULT 'activa',
+  PRIMARY KEY (`id`),
+  KEY `cliente_id` (`cliente_id`),
+  KEY `habitacion_id` (`habitacion_id`),
+  CONSTRAINT `reservas_ibfk_2` FOREIGN KEY (`habitacion_id`) REFERENCES `habitaciones` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `chk_estado_reserva` CHECK ((`estado` in (_utf8mb4'activa',_utf8mb4'cancelada',_utf8mb4'completada')))
+) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `reservas`
+--
+
+LOCK TABLES `reservas` WRITE;
+/*!40000 ALTER TABLE `reservas` DISABLE KEYS */;
+INSERT INTO `reservas` VALUES (1,9,1,'2024-11-01 00:00:00','2024-11-22 00:00:00','2024-11-20 21:01:55','activa'),(2,4,9,'2024-11-21 00:00:00','2024-11-27 00:00:00','2024-11-20 21:03:17','activa'),(3,9,21,'2024-11-20 00:00:00','2024-11-21 00:00:00','2024-11-20 21:04:05','activa'),(4,9,30,'2024-11-20 00:00:00','2024-11-21 00:00:00','2024-11-20 21:06:36','activa'),(5,9,15,'2024-11-22 00:00:00','2024-11-23 00:00:00','2024-11-21 15:27:56','activa'),(6,20,1,'2024-11-24 00:00:00','2024-11-30 00:00:00','2024-11-22 17:51:54','activa'),(7,20,1,'2024-11-22 00:00:00','2024-11-23 00:00:00','2024-11-22 18:04:12','activa'),(8,20,11,'2024-11-22 00:00:00','2024-11-23 00:00:00','2024-11-22 18:18:06','activa'),(9,20,1,'2024-11-22 00:00:00','2024-11-23 00:00:00','2024-11-22 18:33:22','activa'),(10,20,1,'2024-11-22 00:00:00','2024-11-23 00:00:00','2024-11-22 18:39:42','activa'),(11,20,2,'2024-11-22 00:00:00','2024-11-23 00:00:00','2024-11-22 21:17:11','activa'),(12,20,2,'2024-11-23 00:00:00','2024-11-30 00:00:00','2024-11-23 04:24:08','activa'),(13,20,9,'2024-11-24 00:00:00','2024-11-25 00:00:00','2024-11-23 04:47:28','activa'),(14,20,1,'2024-11-24 00:00:00','2024-11-25 00:00:00','2024-11-23 04:54:04','activa'),(15,20,2,'2024-11-23 00:00:00','2024-11-24 00:00:00','2024-11-23 05:10:39','activa'),(16,20,3,'2024-11-25 00:00:00','2024-11-26 00:00:00','2024-11-23 18:53:19','activa'),(17,20,13,'2024-11-23 00:00:00','2024-11-24 00:00:00','2024-11-23 18:56:21','activa'),(18,20,4,'2024-12-13 00:00:00','2024-12-23 00:00:00','2024-11-23 19:03:15','activa'),(19,20,5,'2025-03-17 00:00:00','2025-03-20 00:00:00','2024-11-23 19:09:02','activa'),(20,20,6,'2024-11-23 00:00:00','2024-11-24 00:00:00','2024-11-23 19:18:56','activa'),(21,20,7,'2024-11-23 00:00:00','2024-11-24 00:00:00','2024-11-23 19:34:31','activa'),(22,20,30,'2024-12-25 00:00:00','2024-12-26 00:00:00','2024-11-23 19:37:20','activa'),(23,20,6,'2024-11-25 00:00:00','2024-11-26 00:00:00','2024-11-25 18:55:18','activa'),(24,20,20,'2024-11-29 00:00:00','2024-11-30 00:00:00','2024-11-25 19:21:05','activa'),(25,20,3,'2024-11-27 00:00:00','2024-11-28 00:00:00','2024-11-25 19:32:31','activa'),(26,20,1,'2025-04-25 00:00:00','2025-04-30 00:00:00','2024-11-25 19:34:14','activa'),(27,21,28,'2024-11-27 00:00:00','2024-11-30 00:00:00','2024-11-25 19:44:16','activa'),(28,21,3,'2024-11-28 00:00:00','2024-11-29 00:00:00','2024-11-28 20:49:32','activa'),(29,20,4,'2024-11-28 00:00:00','2024-11-30 00:00:00','2024-11-28 20:49:49','activa');
+/*!40000 ALTER TABLE `reservas` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2024-11-28 18:29:33

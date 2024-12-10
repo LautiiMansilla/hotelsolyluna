@@ -1,0 +1,98 @@
+{% extends "base.html" %}
+
+{% block title %}
+Página de Perfil - Hotel Sol y Luna
+{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1 class="text-center mb-4">Bienvenido, {{ usuario.nombre }} {{ usuario.apellido }}</h1>
+
+    <!-- Información del usuario -->
+    <div class="card mb-4">
+        <div class="card-body">
+            <p><strong>Email:</strong> {{ usuario.email }}</p>
+            <p><strong>DNI:</strong> {{ usuario.dni }}</p>
+            <p><strong>Fecha de nacimiento:</strong> {{ usuario.fecha_nacimiento }}</p>
+            <p><strong>Rol:</strong> {{ usuario.rol }}</p>
+        </div>
+    </div>
+
+    <div class="profile-container">
+        <h1>Bienvenido, {{ usuario.nombre }}!</h1>
+        <p>Rol: {{ usuario.rol }}</p>
+        
+        <!-- Mostrar el botón solo para administradores -->
+        {% if usuario.rol == 'administrador' %}
+        <div class="admin-actions mb-4">
+            <a href="{{ url_for('admin_usuarios') }}" class="btn btn-primary">Ver lista de usuarios</a>
+            <a href="{{ url_for('reportes') }}" class="btn btn-warning">Ver Reportes Administrativos</a>
+        </div>
+        {% endif %}
+    </div>
+
+    <!-- Mis Reservas -->
+    <div class="card mb-4">
+        <div class="card-body">
+            <h3 class="mb-4">Mis Reservas</h3>
+
+            {% if reservas %}
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Habitación</th>
+                        <th>Fecha de Inicio</th>
+                        <th>Fecha de Fin</th>
+                        <th>Días</th>
+                        <th>Precio Total</th>
+                        <th>Estado</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for reserva in reservas %}
+                    <tr>
+                        <td>{{ reserva.habitacion.tipo }} ({{ reserva.habitacion.numero }})</td>
+                        <td>{{ reserva.fecha_inicio.strftime('%d/%m/%Y') }}</td>
+                        <td>{{ reserva.fecha_fin.strftime('%d/%m/%Y') }}</td>
+                        <td>
+                            {% set dias = (reserva.fecha_fin - reserva.fecha_inicio).days %}
+                            {{ dias }}
+                        </td>
+                        <td>
+                            {% set precio_total = dias * reserva.habitacion.precio %}
+                            ${{ "%.2f"|format(precio_total) }}
+                        </td>
+                        <td>
+                            {% if reserva.estado == 'activa' %}
+                            <span class="badge bg-success">Activa</span>
+                            {% elif reserva.estado == 'cancelada' %}
+                            <span class="badge bg-danger">Cancelada</span>
+                            {% else %}
+                            <span class="badge bg-secondary">Finalizada</span>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            {% else %}
+            <p>No tienes reservas realizadas.</p>
+            {% endif %}
+        </div>
+    </div>
+
+<!-- Botones para nuevas funciones (solo administrador o empleado) -->
+{% if usuario.rol == 'administrador' or usuario.rol == 'empleado' %}
+<div class="action-buttons text-center mb-4">
+    <a href="{{ url_for('empleado_reservas') }}" class="btn btn-info">Lista de Reservas</a>
+</div>
+{% endif %}
+
+    <!-- Botones de acción -->
+    <div class="text-center mt-4">
+        <a href="{{ url_for('home') }}" class="btn btn-secondary">Volver a inicio</a>
+        <a href="{{ url_for('logout') }}" class="btn btn-danger">Cerrar sesión</a>
+    </div>
+</div>
+
+{% endblock %}

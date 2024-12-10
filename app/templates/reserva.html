@@ -1,0 +1,143 @@
+{% extends "base.html" %}
+
+{% block title %}
+Reserva tu habitación
+{% endblock %}
+
+{% block content %}
+<div class="container reserva-container my-5">
+    <div class="mt-5">
+        {% with messages = get_flashed_messages(with_categories=True) %}
+        {% if messages %}
+            {% for category, message in messages %}
+            <div class="alert alert-{{ category }} custom-alert" role="alert">
+                {{ message }}
+            </div>
+            {% endfor %}
+        {% endif %}
+        {% endwith %}
+    </div>
+
+    <h1 class="mb-4 text-center">Realiza tu Reserva</h1>
+
+    <!-- Formulario para seleccionar fechas -->
+    <form method="get" action="{{ url_for('reserva') }}" class="mb-4">
+        <div class="row">
+            <div class="col-md-5">
+                <label for="fecha_inicio" class="form-label">Fecha de inicio:</label>
+                <input
+                    type="date"
+                    id="fecha_inicio"
+                    name="fecha_inicio"
+                    class="form-control"
+                    min="{{ hoy }}"
+                    value="{{ fecha_inicio or '' }}"
+                    required>
+            </div>
+            <div class="col-md-5">
+                <label for="fecha_fin" class="form-label">Fecha de fin:</label>
+                <input
+                    type="date"
+                    id="fecha_fin"
+                    name="fecha_fin"
+                    class="form-control"
+                    min="{{ hoy }}"
+                    value="{{ fecha_fin or '' }}"
+                    required>
+            </div>
+            <div class="col-md-2 d-flex align-items-end">
+                <button type="submit" class="btn btn-primary w-100">Buscar</button>
+            </div>
+        </div>
+    </form>
+
+    <!-- Mostrar habitaciones disponibles -->
+    {% if fecha_inicio and fecha_fin %}
+    <form action="{{ url_for('procesar_reserva') }}" method="post">
+        <input type="hidden" name="fecha_inicio" value="{{ fecha_inicio }}">
+        <input type="hidden" name="fecha_fin" value="{{ fecha_fin }}">
+
+        <!-- Selección de habitación -->
+        <div class="mb-3">
+            <label for="habitacion" class="form-label">Selecciona tu habitación:</label>
+            <select
+                name="habitacion"
+                id="habitacion"
+                class="form-select"
+                required>
+                {% if habitaciones %}
+                    {% for habitacion in habitaciones %}
+                    <option value="{{ habitacion.id }}">
+                        Habitación {{ habitacion.numero }} - {{ habitacion.tipo }} - Capacidad: {{ habitacion.capacidad }} personas - ${{ habitacion.precio }} por noche
+                    </option>
+                    {% endfor %}
+                {% else %}
+                    <option disabled>No hay habitaciones disponibles para las fechas seleccionadas.</option>
+                {% endif %}
+            </select>
+        </div>
+
+        <!-- Selección del método de pago -->
+        <div class="mb-3">
+            <label for="metodo_pago" class="form-label">Elige tu método de pago:</label>
+            <select name="metodo_pago" id="metodo_pago" class="form-select" required>
+                <option value="efectivo">Efectivo</option>
+                <option value="paypal">PayPal</option>
+            </select>
+        </div>
+
+        <!-- Mostrar botón PayPal si se selecciona PayPal -->
+        <div id="paypal-button-container" class="d-none">
+            <div id="paypal-button"></div>
+        </div>
+
+        <div class="text-center">
+            <button type="submit" class="btn btn-primary">Confirmar Reserva</button>
+        </div>
+    </form>
+    {% endif %}
+
+    <div class="text-center mt-3">
+        <a href="{{ url_for('home') }}" class="btn btn-secondary">Volver al inicio</a>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+    <script src="https://www.paypal.com/sdk/js?client-id=AZjYMRe9Uj8_mFPbfH5ibT-QapwC9snlK7qPw4fv4yC9xYu3dnoNKowbWyHJDOwqUDnOJpMWGKB98QSB&components=buttons"></script>
+    <script>
+        // Mostrar el botón de PayPal solo si el usuario selecciona PayPal
+        document.getElementById('metodo_pago').addEventListener('change', function() {
+            const selectedPaymentMethod = this.value;
+            const paypalButtonContainer = document.getElementById('paypal-button-container');
+            if (selectedPaymentMethod === 'paypal') {
+                paypalButtonContainer.classList.remove('d-none');
+            } else {
+                paypalButtonContainer.classList.add('d-none');
+            }
+        });
+
+        // Crear el botón de PayPal cuando se seleccione
+    paypal.Buttons({
+        createOrder: function(data, actions) {
+            return actions.order.create({
+                purchase_units: [{
+                    amount: {
+                        value: '{{ precio_total }}' // Asegúrate de pasar este valor desde Flask
+                    }
+                }]
+            });
+        },
+        onApprove: function(data, actions) {
+            return actions.order.capture().then(function(details) {
+                alert('Pago aprobado por ' + details.payer.name.given_name);
+                window.location.href = "{{ url_for('confirmacion_pago', reserva_id=reserva.id) }}"; // Asegúrate de tener esta ruta
+            });
+        },
+        onError: function(err) {
+            alert('Ocurrió un error con el pago: ' + err);
+        }
+    }).render('#paypal-button');
+</script>
+{% endblock %}

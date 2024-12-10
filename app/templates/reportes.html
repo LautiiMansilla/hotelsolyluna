@@ -1,0 +1,211 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-5"> <!-- Ajuste del margen superior -->
+    <h2 class="mb-4">Reportes Administrativos</h2>
+    <div class="row">
+        <!-- Reporte de Ingresos Diarios -->     
+        <div class="col-md-6 mb-4">
+            <div class="card">
+                <div class="card-header bg-primary text-white">
+                    Ingresos Diarios
+                </div>
+                <div class="card-body">
+                    <table class="table table-striped table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Fecha</th>
+                                <th>Ingresos</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for ingreso in ingresos_diarios_data %}
+                                <tr>
+                                    <td>{{ ingreso.fecha }}</td>
+                                    <td>${{ ingreso.ingresos|round(2) }}</td>
+                                </tr>
+                            {% else %}
+                                <tr>
+                                    <td colspan="2" class="text-center">No hay datos disponibles.</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Reporte de Ingresos Mensuales -->
+        <div class="col-md-6 mb-4">
+            <div class="card">
+                <div class="card-header bg-primary text-white">
+                    Ingresos Mensuales
+                </div>
+                <div class="card-body">
+                    <table class="table table-striped table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Mes</th>
+                                <th>Ingresos</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for ingreso in ingresos_mensuales_data %}
+                                <tr>
+                                    <td>{{ ingreso.mes }}</td>
+                                    <td>${{ ingreso.ingresos|round(2) }}</td>
+                                </tr>
+                            {% else %}
+                                <tr>
+                                    <td colspan="2" class="text-center">No hay datos disponibles.</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <!-- Ingresos por Método de Pago -->
+        <div class="col-md-6 mb-4">
+            <div class="card">
+                <div class="card-header bg-primary text-white">
+                    Ingresos por Método de Pago
+                </div>
+                <div class="card-body">
+                    <table class="table table-striped table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Método de Pago</th>
+                                <th>Ingresos</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for ingreso in ingresos_metodo_pago_data %}
+                                <tr>
+                                    <td>{{ ingreso.metodo_pago }}</td>
+                                    <td>${{ ingreso.ingresos|round(2) }}</td>
+                                </tr>
+                            {% else %}
+                                <tr>
+                                    <td colspan="2" class="text-center">No hay datos disponibles.</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Habitaciones Más Reservadas -->
+        <div class="col-md-6 mb-4">
+            <div class="card">
+                <div class="card-header bg-primary text-white">
+                    Habitaciones Más Reservadas
+                </div>
+                <div class="card-body">
+                    <table class="table table-striped table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Habitación</th>
+                                <th>Tipo</th>
+                                <th>Número de Reservas</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for habitacion in habitaciones_populares %}
+                                <tr>
+                                    <td>{{ habitacion.numero }}</td>
+                                    <td>{{ habitacion.tipo }}</td>
+                                    <td>{{ habitacion.num_reservas }}</td>
+                                </tr>
+                            {% else %}
+                                <tr>
+                                    <td colspan="3" class="text-center">No hay datos disponibles.</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <!-- Fechas Más Solicitadas -->
+        <div class="col-md-12 mb-4">
+            <div class="card">
+                <div class="card-header bg-primary text-white">
+                    Fechas Más Solicitadas
+                </div>
+                <div class="card-body">
+                    <table class="table table-striped table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Fecha</th>
+                                <th>Número de Reservas</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for fecha in fechas_populares %}
+                                <tr>
+                                    <td>{{ fecha.fecha }}</td>
+                                    <td>{{ fecha.num_reservas }}</td>
+                                </tr>
+                            {% else %}
+                                <tr>
+                                    <td colspan="2" class="text-center">No hay datos disponibles.</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Reportes Gráficos -->
+    <div class="row">
+        <!-- Reporte de Ingresos Diarios (Gráfico) -->
+        <div class="col-md-6 mb-4">
+            <div class="card">
+                <div class="card-header bg-primary text-white">
+                    Ingresos Diarios (Gráfico)
+                </div>
+                <div class="card-body">
+                    <img src="data:image/png;base64,{{ ingresos_diarios_img }}" class="grafico" alt="Ingresos Diarios">
+                </div>
+            </div>
+        </div>
+
+        <!-- Reporte de Ingresos Mensuales (Gráfico) -->
+        <div class="col-md-6 mb-4">
+            <div class="card">
+                <div class="card-header bg-primary text-white">
+                    Ingresos Mensuales (Gráfico)
+                </div>
+                <div class="card-body">
+                    <img src="data:image/png;base64,{{ ingresos_mensuales_img }}" class="grafico" alt="Ingresos Mensuales">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <!-- Ingresos por Método de Pago (Gráfico) -->
+        <div class="col-md-6 mb-4">
+            <div class="card">
+                <div class="card-header bg-primary text-white">
+                    Ingresos por Método de Pago (Gráfico)
+                </div>
+                <div class="card-body">
+                    <img src="data:image/png;base64,{{ ingresos_metodo_img }}" class="grafico" alt="Ingresos por Método de Pago">
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div> <!-- Fin del contenedor -->
+{% endblock %}

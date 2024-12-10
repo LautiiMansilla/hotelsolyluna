@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+
+{% block title %}
+Tipos de Habitaciones
+{% endblock %}
+
+{% block content %}
+<div class="habitaciones-info">
+    <h1>Tipos de Habitaciones</h1>
+    
+    <div class="habitacion">
+        <div class="habitacion-content">
+            <div class="habitacion-img-container">
+                <img src="{{ url_for('static', filename='img/simple.jpg') }}" alt="Habitación Simple" class="habitacion-img">
+            </div>
+            <div class="habitacion-text">
+                <h2>Habitación Simple</h2>
+                <p>Perfecta para viajeros solitarios que buscan comodidad y privacidad.</p>
+                <ul>
+                    <li><strong>Capacidad:</strong> 1 persona</li>
+                    <li><strong>Precio por noche:</strong> $50,000</li>
+                    <li><strong>Incluye:</strong> Cama individual, baño privado, Wi-Fi gratis, televisión.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <hr>
+    
+    <div class="habitacion">
+        <div class="habitacion-content">
+            <div class="habitacion-img-container">
+                <img src="{{ url_for('static', filename='img/doble.jfif') }}" alt="Habitación Doble" class="habitacion-img">
+            </div>
+            <div class="habitacion-text">
+                <h2>Habitación Doble</h2>
+                <p>Ideal para parejas o amigos que viajan juntos y buscan confort.</p>
+                <ul>
+                    <li><strong>Capacidad:</strong> 2 personas</li>
+                    <li><strong>Precio por noche:</strong> $80,000</li>
+                    <li><strong>Incluye:</strong> Cama matrimonial, baño privado, Wi-Fi gratis, televisión premium.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <hr>
+    
+    <div class="habitacion">
+        <div class="habitacion-content">
+            <div class="habitacion-img-container">
+                <img src="{{ url_for('static', filename='img/suite.avif') }}" alt="Habitación Suite" class="habitacion-img">
+            </div>
+            <div class="habitacion-text">
+                <h2>Habitación Suite</h2>
+                <p>Una experiencia de lujo para familias o grupos pequeños.</p>
+                <ul>
+                    <li><strong>Capacidad:</strong> 4 personas</li>
+                    <li><strong>Precio por noche:</strong> $150,000</li>
+                    <li><strong>Incluye:</strong> Una cama matrimonial y dos camas individuales, sala de estar, baño privado de lujo, Wi-Fi gratis, televisión premium, minibar.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <a href="{{ url_for('home') }}" class="btn btn-primary">Volver al Inicio</a>
+</div>
+{% endblock %}

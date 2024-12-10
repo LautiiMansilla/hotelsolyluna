@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% block title %}Gestión de Usuarios - Admin{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1 class="text-center">Gestión de Usuarios</h1>
+
+    <!-- Filtro por Nombre, DNI y Rol -->
+    <form method="GET" action="{{ url_for('admin_usuarios') }}" class="mb-4">
+        <label for="nombre">Buscar por Nombre:</label>
+        <input type="text" name="nombre" id="nombre" class="form-control" placeholder="Ingresa un nombre" value="{{ request.args.get('nombre', '') }}">
+
+        <label for="dni" class="mt-3">Buscar por DNI:</label>
+        <input type="text" name="dni" id="dni" class="form-control" placeholder="Ingresa un DNI" value="{{ request.args.get('dni', '') }}">
+
+        <label for="rol" class="mt-3">Filtrar por Rol:</label>
+        <select name="rol" id="rol" class="form-select">
+            <option value="">Todos</option>
+            <option value="cliente" {% if request.args.get('rol') == 'cliente' %}selected{% endif %}>Cliente</option>
+            <option value="empleado" {% if request.args.get('rol') == 'empleado' %}selected{% endif %}>Empleado</option>
+            <option value="administrador" {% if request.args.get('rol') == 'administrador' %}selected{% endif %}>Administrador</option>
+        </select>
+
+        <button type="submit" class="btn btn-primary mt-3">Buscar</button>
+    </form>
+
+    <a href="{{ url_for('exportar_usuarios') }}" class="btn btn-primary">Exportar Usuarios</a>
+
+    <!-- Tabla de usuarios -->
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Email</th>
+                <th>DNI</th>
+                <th>Rol</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for usuario in usuarios %}
+            <tr>
+                <td>{{ usuario.nombre }} {{ usuario.apellido }}</td>
+                <td>{{ usuario.email }}</td>
+                <td>{{ usuario.dni }}</td>
+                <td>{{ usuario.rol }}</td>
+                <td>
+                    <a href="{{ url_for('admin_editar_usuario', usuario_id=usuario.id) }}" class="btn btn-warning btn-sm">Editar</a>
+                    <form action="{{ url_for('admin_eliminar_usuario', usuario_id=usuario.id) }}" method="POST" style="display:inline;">
+                        <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('¿Estás seguro de eliminar este usuario?');">Eliminar</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

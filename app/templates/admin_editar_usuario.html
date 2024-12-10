@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block title %}Editar Usuario - Admin{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1 class="text-center">Editar Usuario</h1>
+    <form method="POST" action="{{ url_for('admin_editar_usuario', usuario_id=usuario.id) }}">
+        <div class="mb-3">
+            <label for="nombre" class="form-label">Nombre:</label>
+            <input type="text" id="nombre" name="nombre" class="form-control" value="{{ usuario.nombre }}" required>
+        </div>
+        <div class="mb-3">
+            <label for="apellido" class="form-label">Apellido:</label>
+            <input type="text" id="apellido" name="apellido" class="form-control" value="{{ usuario.apellido }}" required>
+        </div>
+        <div class="mb-3">
+            <label for="email" class="form-label">Email:</label>
+            <input type="email" id="email" name="email" class="form-control" value="{{ usuario.email }}" required>
+        </div>
+        <div class="mb-3">
+            <label for="dni" class="form-label">DNI:</label>
+            <input type="text" id="dni" name="dni" class="form-control" value="{{ usuario.dni }}" required>
+        </div>
+        <div class="mb-3">
+            <label for="rol" class="form-label">Rol:</label>
+            <select id="rol" name="rol" class="form-select">
+                <option value="cliente" {% if usuario.rol == 'cliente' %}selected{% endif %}>Cliente</option>
+                <option value="empleado" {% if usuario.rol == 'empleado' %}selected{% endif %}>Empleado</option>
+                <option value="administrador" {% if usuario.rol == 'administrador' %}selected{% endif %}>Administrador</option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+        <a href="{{ url_for('admin_usuarios') }}" class="btn btn-secondary">Cancelar</a>
+    </form>
+</div>
+{% endblock %}

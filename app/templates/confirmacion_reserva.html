@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+<div class="container mt-6"> <!-- Ajuste del margen superior -->
+    <h2 class="mb-4">Confirmación de Reserva</h2>
+
+{% block content %}
+<div class="container confirmacion-container my-5">
+    <div class="text-center">
+        <h1 class="mb-4 confirmacion-titulo">¡Reserva Confirmada!</h1>
+        <p class="lead confirmacion-descripcion">Gracias por confiar en nosotros. Aquí tienes los detalles de tu reserva:</p>
+    </div>
+
+    <div class="card confirmacion-card mx-auto mt-4 shadow">
+        <div class="card-header confirmacion-header">
+            <h4>Detalles de la Reserva</h4>
+        </div>
+        <div class="card-body confirmacion-body">
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">
+                    <strong>Habitación:</strong> {{ reserva.habitacion.tipo }}
+                </li>
+                <li class="list-group-item">
+                    <strong>Capacidad:</strong> {{ reserva.habitacion.capacidad }} personas
+                </li>
+                <li class="list-group-item">
+                    <strong>Precio por noche:</strong> ${{ reserva.habitacion.precio }}
+                </li>
+                <li class="list-group-item">
+                    <strong>Fecha de inicio:</strong> {{ reserva.fecha_inicio.strftime('%Y-%m-%d') }}
+                </li>
+                <li class="list-group-item">
+                    <strong>Fecha de fin:</strong> {{ reserva.fecha_fin.strftime('%Y-%m-%d') }}
+                </li>
+                <li class="list-group-item">
+                    <strong>Duración:</strong> {{ (reserva.fecha_fin - reserva.fecha_inicio).days }} días
+                </li>
+                <li class="list-group-item">
+                    <strong>Total a pagar:</strong> ${{ reserva.habitacion.precio * (reserva.fecha_fin - reserva.fecha_inicio).days }}
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="text-center mt-4 confirmacion-botones">
+        <a href="{{ url_for('home') }}" class="btn btn-primary btn-volver">Volver al inicio</a>
+        <a href="{{ url_for('reserva') }}" class="btn btn-secondary btn-otra-reserva">Realizar otra reserva</a>
+    </div>
+</div>
+{% endblock %}

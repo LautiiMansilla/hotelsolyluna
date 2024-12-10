@@ -1,0 +1,126 @@
+{% extends "base.html" %}
+
+{% block title %}
+Página Principal - Hotel
+{% endblock %}
+
+{% block content %}
+<!-- Bloque para mostrar mensajes flash -->
+<div class="container mt-3">
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        {% for category, message in messages %}
+        <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+            {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        {% endfor %}
+    {% endif %}
+    {% endwith %}
+</div>
+
+<!-- Carrusel de imágenes -->
+<div id="hotelCarousel" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+        <!-- Primera imagen del carrusel (activa por defecto) -->
+        <div class="carousel-item active">
+            <img src="{{ url_for('static', filename='img/recepcion.jpg') }}" class="d-block w-100" alt="Recepción del hotel">
+        </div>
+        <!-- Segunda imagen del carrusel -->
+        <div class="carousel-item">
+            <img src="{{ url_for('static', filename='img/lobby.jfif') }}" class="d-block w-100" alt="Lobby del hotel">
+        </div>
+        <!-- Tercera imagen del carrusel -->
+        <div class="carousel-item">
+            <img src="{{ url_for('static', filename='img/pileta.jpg') }}" class="d-block w-100" alt="Pileta del hotel">
+        </div>
+        <!-- Cuarta imagen del carrusel -->
+        <div class="carousel-item">
+            <img src="{{ url_for('static', filename='img/restaurante.png') }}" class="d-block w-100" alt="Lobby del hotel">
+        </div>
+        <!-- Quinta imagen del carrusel -->
+        <div class="carousel-item">
+            <img src="{{ url_for('static', filename='img/gym.jpg') }}" class="d-block w-100" alt="Pileta del hotel">
+        </div>
+        <!-- Sexta imagen del carrusel -->
+        <div class="carousel-item">
+            <img src="{{ url_for('static', filename='img/desayuno.jpg') }}" class="d-block w-100" alt="Pileta del hotel">
+        </div>
+    </div>
+    <!-- Botones para navegar entre las imágenes -->
+    <button class="carousel-control-prev" type="button" data-bs-target="#hotelCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Anterior</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#hotelCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Siguiente</span>
+    </button>
+</div>
+
+<!-- Información sobre el hotel -->
+<section id="info-hotel" class="container my-5">
+    <h2>Bienvenidos a nuestro Hotel</h2>
+    <p>Ubicado en el corazón de la ciudad, nuestro hotel combina elegancia y modernidad, ofreciendo servicios de primera calidad diseñados para que tu estancia sea cómoda, agradable y memorable.</p>
+    <p>Contamos con habitaciones de lujo, equipadas con tecnología de última generación y una decoración sofisticada que garantiza el máximo confort. Disfruta de nuestra exquisita oferta gastronómica en restaurantes que combinan sabores locales e internacionales, con opciones para todos los paladares.
+        Para los amantes del bienestar, nuestro gimnasio completamente equipado, spa y piscina te invitan a relajarte y recargar energías. 
+    <p>Nuestra céntrica ubicación te permite explorar fácilmente los puntos más emblemáticos de la ciudad, con acceso cercano a tiendas, lugares históricos y opciones de entretenimiento. Ya sea por negocios o placer, en nuestro hotel encontrarás todo lo necesario para vivir una experiencia única e inolvidable. ¡Te esperamos!</p>
+</section>
+
+<!-- Botón para ver las habitaciones -->
+<section class="habitaciones-section" section id="habitaciones-section">
+    <div class="container">
+        <div class="habitaciones-content">
+            <div class="img-container">
+                <img src="{{ url_for('static', filename='img/habitacion.jpg') }}" alt="Desayuno en la habitación">
+            </div>
+            <div class="text-container">
+                <h2>Habitaciones &amp; Suites</h2>
+                <h3>Lujo y Confort en Nuestro Hotel</h3>
+                <p>
+                    Descubre nuestras exclusivas habitaciones y suites, diseñadas para ofrecer el máximo confort y lujo en cada detalle. Vive una experiencia inolvidable mientras disfrutas de nuestras modernas instalaciones, servicio personalizado y una atención que supera las expectativas.
+                    Sumérgete en la tranquilidad de nuestros espacios elegantes y cuidadosamente decorados, ideales tanto para escapadas románticas como para viajes familiares o de negocios.
+                </p>
+                <div class="buttons">
+                    <a href="{{ url_for('habitaciones') }}" class="btn-secondary">Ver Habitaciones</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Sección de ubicación del hotel y formulario de consultas -->
+<section id="ubicacion" class="container my-5">
+    <h3>Ubicación</h3>
+    <p>Estamos ubicados en la Avenida Jose A. Mercau 150, Merlo, San Luis, Argentina.</p>
+    <div id="mapa" style="width: 100%; height: 400px; background-color: #eaeaea;">
+        <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13591.924241343953!2d-64.9990403!3d-32.3500797!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95d2e6aa0a2f4e0d%3A0xf98190bf8d04cd8e!2sHotel%20Sol%20Y%20Luna!5e0!3m2!1ses!2sar!4v1692039485621!5m2!1ses!2sar"
+            width="100%"
+            height="400"
+            style="border:0;"
+            allowfullscreen=""
+            loading="lazy">
+        </iframe>
+    </div>
+</section>
+
+<section id="consulta" class="container my-5">
+    <h3>Envíanos tus consultas</h3>
+    <form action="{{ url_for('consulta') }}" method="post">
+        <div class="mb-3">
+            <label for="nombreConsulta" class="form-label">Nombre</label>
+            <input type="text" class="form-control" id="nombreConsulta" name="nombreConsulta" required>
+        </div>
+        <div class="mb-3">
+            <label for="emailConsulta" class="form-label">Email</label>
+            <input type="email" class="form-control" id="emailConsulta" name="emailConsulta" required>
+        </div>
+        <div class="mb-3">
+            <label for="mensajeConsulta" class="form-label">Mensaje</label>
+            <textarea class="form-control" id="mensajeConsulta" name="mensajeConsulta" rows="3" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Enviar Consulta</button>
+    </form>
+</section>
+{% endblock %}

@@ -1,0 +1,809 @@
+/* Estilo general para todas las páginas */
+.body_index {
+  background-image: url('../static/img/hotel.png'); /* Asegúrate de que la ruta sea correcta */
+  background-size: cover; /* Asegura que la imagen cubra toda la pantalla */
+  background-position: center center; /* Centra la imagen de fondo */
+  background-repeat: no-repeat;
+  background-attachment: fixed; /* La imagen no se mueve al hacer scroll */
+  margin: 0;
+  height: 100vh; /* Asegura que el fondo ocupe toda la altura de la ventana */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Estilo para el contenedor del logo */
+.logo-container {
+  text-align: center; /* Centra el logo */
+  position: absolute;
+  top: 20px; /* Ajusta la distancia desde la parte superior */
+  left: 50%; /* Centra el logo horizontalmente */
+  transform: translateX(-50%); /* Asegura que el logo esté perfectamente centrado */
+}
+
+/* Estilo para el logo */
+.logo {
+  width: 1000px; /* Ajusta el tamaño del logo */
+  height: auto;
+}
+
+/* Estilos del contenedor principal */
+.login-container {
+  max-width: 400px;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: #f8f9fa;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilo para el mensaje de éxito */
+.success-message {
+  padding: 15px;
+  margin-bottom: 20px;
+  color: #155724;
+  background-color: #d4edda;
+  border: 1px solid #c3e6cb;
+  border-radius: 5px;
+  text-align: center;
+}
+
+/* Estilo de los inputs y etiquetas */
+.form-group label {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 15px;
+  border: 1px solid #ced4da;
+  border-radius: 5px;
+}
+
+/* Botones */
+.btn {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  text-align: center;
+  color: #fff;
+  background-color: #28a745;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.btn:hover {
+  background-color: #218838;
+}
+
+/* Estilos para los textos */
+.titulo_index {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.text_menu_index h4, .text_menu_index p {
+  color: #333;
+}
+
+/* Ajustes de los botones */
+.btn-custom {
+  color: #fff;
+  text-decoration: none;
+}
+
+/* Estilo del formulario de registro */
+.login-container {
+  background-color: rgba(255, 255, 255, 0.9); /* Fondo blanco semi-transparente */
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  max-width: 400px;
+  margin: 50px auto; /* Centrado horizontal y espacio superior */
+  text-align: center;
+}
+.login-container h2 {
+  font-size: 1.8rem;
+  color: #333;
+  margin-bottom: 20px;
+}
+.login-container .form-group {
+  margin-bottom: 15px;
+  text-align: left;
+}
+.login-container label {
+  font-weight: bold;
+  color: #333;
+  display: block;
+  margin-bottom: 5px;
+}
+.login-container input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+.login-container button {
+  width: 100%; /* Hace que ocupen el mismo ancho que el formulario */
+  max-width: 300px; /* Ajusta el ancho máximo del botón */
+  padding: 10px 15px; /* Espaciado interno para altura */
+  font-size: 16px; /* Tamaño del texto */
+  border-radius: 5px; /* Bordes redondeados */
+  display: block; /* Asegura que se comporten como bloques (uno debajo del otro si están alineados) */
+  margin: 10px auto; /* Espaciado automático para centrar */
+}
+.login-container button:hover {
+  background-color: #218838;
+}
+
+#info-hotel {
+  background-color: #f8f9fa;
+  padding: 30px;
+  border-radius: 8px;
+}
+
+#ubicacion {
+  background-color: #f1f1f1;
+  padding: 30px;
+  border-radius: 8px;
+}
+
+footer {
+  background-color: #343a40;
+  color: #ffffff;
+}
+
+.profile-container {
+  max-width: 600px;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
+.profile-container h1 {
+  font-size: 2rem;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.profile-container p {
+  font-size: 1.2rem;
+  color: #555;
+  margin: 10px 0;
+}
+
+.profile-container .btn {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  margin: 10px 5px;
+}
+
+.profile-container .btn:hover {
+  background-color: #0056b3;
+}
+
+.reserva-container {
+  max-width: 600px;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
+.reserva-container h1 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.reserva-container .form-group {
+  margin-bottom: 15px;
+  text-align: left;
+}
+
+.reserva-container label {
+  font-weight: bold;
+  margin-bottom: 5px;
+  display: block;
+}
+
+.reserva-container input, .reserva-container select {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.reserva-container button {
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.reserva-container button:hover {
+  background-color: #0056b3;
+}
+
+/* Fondo de la página */
+body {
+  background-color: whitesmoke;
+  background-size: cover;
+  background-position: center center;
+  background-attachment: fixed;
+  font-family: 'Arial', sans-serif;
+  color: #333;
+  margin: 0;
+}
+
+/* Navbar */
+.navbar {
+  background-color: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-brand {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #007bff !important;
+}
+
+.nav-link {
+  font-size: 1rem;
+  color: #555 !important;
+}
+
+.nav-link.active {
+  font-weight: bold;
+  color: #007bff !important;
+}
+
+.nav-link.btn {
+  background-color: #007bff;
+  color: white;
+  font-weight: bold;
+  margin-left: 10px;
+  border-radius: 5px;
+}
+
+.nav-link.btn:hover {
+  background-color: #0056b3;
+}
+
+/* Estilo de los controles */
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  background-color: rgba(0, 0, 0, 0.5); /* Fondo semi-transparente */
+  border-radius: 50%; /* Forma circular */
+  width: 50px;
+  height: 50px;
+}
+
+/* Texto de la descripción */
+.carousel-caption {
+  background-color: rgba(0, 0, 0, 0.5); /* Fondo oscuro semi-transparente */
+  padding: 15px;
+  border-radius: 10px;
+}
+.carousel-caption h5, .carousel-caption p {
+  color: #fff; /* Texto blanco */
+}
+
+#hotelCarousel {
+  width: 90%; /* Ajusta el ancho al 90% del contenedor */
+  max-width: 1312px; /* Ancho máximo, ajustable según el diseño */
+  margin: 0 auto; /* Centra el carrusel en la página */
+  height: 750px; /* Define una altura menor para reducir el largo */
+  overflow: hidden; /* Oculta cualquier contenido fuera del área */
+}
+
+.carousel-item img {
+  width: 100%; /* La imagen ocupa todo el ancho del carrusel */
+  height: 100%; /* La imagen ocupa toda la altura del carrusel */
+  object-fit: cover; /* Recorta y ajusta la imagen sin distorsionarla */
+}
+
+/* Sección de información */
+#info-hotel, #ubicacion, #habitaciones-section{
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin-bottom: 40px;
+}
+
+#info-hotel h2, #ubicacion h3, #habitaciones-section h2{
+  font-size: 2rem;
+  color: #007bff;
+}
+
+#info-hotel p, #ubicacion p, #habitaciones-section p{
+  font-size: 1.1rem;
+  color: #555;
+}
+
+/* Formulario */
+form .form-label {
+  font-weight: bold;
+}
+
+form input, form textarea {
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+form button {
+  background-color: #007bff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 1rem;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+form button:hover {
+  background-color: #0056b3;
+}
+
+/* Mapa */
+#mapa {
+  border-radius: 10px;
+  overflow: hidden;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  color: #555;
+}
+
+/* Pie de página */
+footer {
+  background-color: #343a40;
+  color: white;
+  padding: 20px 0;
+  margin-top: 40px;
+  font-size: 1rem;
+}
+
+footer p {
+  margin: 0;
+}
+
+
+/* Mensajes flash personalizados */
+.custom-alert {
+  background-color: transparent; /* Fondo transparente para integrar con el fondo del sitio */
+  border: 2px solid; /* Asegura que el borde sea visible */
+  border-radius: 5px;
+  padding: 10px 15px;
+  font-weight: bold;
+  text-align: center;
+}
+
+/* Contenedor para mensaje de error */
+.error-message {
+  background-color: #f8d7da; /* Rojo claro */
+  border: 1px solid #f5c2c7; /* Rojo oscuro */
+  color: #842029; /* Texto rojo */
+  padding: 10px;
+  margin-bottom: 15px;
+  border-radius: 5px;
+  text-align: center;
+  font-weight: bold;
+}
+
+/* Ajustes generales del contenedor de inicio de sesión */
+.login-container {
+  background-color: #ffffff; /* Fondo blanco */
+  border: 1px solid #ddd; /* Borde gris claro */
+  border-radius: 5px;
+  padding: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra suave */
+}
+
+.btn {
+  width: 100%; /* Hace que ocupen el mismo ancho que el formulario */
+  max-width: 300px; /* Ajusta el ancho máximo del botón */
+  padding: 10px 15px; /* Espaciado interno para altura */
+  font-size: 16px; /* Tamaño del texto */
+  border-radius: 5px; /* Bordes redondeados */
+  display: block; /* Asegura que se comporten como bloques (uno debajo del otro si están alineados) */
+  margin: 10px auto; /* Espaciado automático para centrar */
+}
+
+.btn-success {
+  background-color: #28a745; /* Verde */
+  color: white;
+  text-align: center;
+  text-decoration: none; /* Elimina el subrayado del enlace */
+}
+
+.btn-success:hover {
+  background-color: #218838; /* Verde oscuro al pasar el mouse */
+}
+
+.form-group {
+  margin-bottom: 20px; /* Margen inferior entre los campos */
+}
+
+.mt-3 {
+  margin-top: 15px; /* Ajusta la separación superior entre los botones */
+}
+
+@media (max-width: 768px) {
+  .navbar .nav-link {
+      font-size: 14px; /* Ajusta el tamaño del texto */
+  }
+  .navbar .btn-primary {
+      padding: 8px 16px; /* Ajusta el tamaño del botón */
+  }
+}
+
+/* Estilo para la barra de navegación fija */
+.navbar {
+  position: fixed; /* Fija la barra al viewport */
+  top: 0;
+  left: 0;
+  width: 100%; /* Ocupa todo el ancho */
+  z-index: 1030; /* Asegura que esté por encima de otros elementos */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Añade una ligera sombra */
+}
+
+/* Ajuste de las habitaciones */
+.habitaciones-info {
+  max-width: 1000px;
+  margin: auto;
+  padding: 20px;
+}
+
+/* Estilo de cada habitación */
+.habitacion {
+  margin-bottom: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.habitacion-content {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilo de la imagen */
+.habitacion-img-container {
+  flex: 1;
+  max-width: 50%;
+  overflow: hidden;
+}
+
+.habitacion-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
+/* Estilo del texto */
+.habitacion-text {
+  flex: 2;
+  padding: 20px;
+}
+
+.habitacion-text h2 {
+  font-size: 1.8em;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.habitacion-text p {
+  margin-bottom: 15px;
+  color: #555;
+}
+
+.habitacion-text ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.habitacion-text ul li {
+  margin-bottom: 10px;
+  font-size: 1em;
+}
+
+.habitacion-text ul li strong {
+  color: #007bff;
+}
+
+/* Botón principal */
+.btn {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 10px 20px;
+  text-decoration: none;
+  color: #fff;
+  background-color: #007bff;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.btn:hover {
+  background-color: #0056b3;
+}
+
+/* General styles */
+body {
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Image container */
+.habitaciones-section .img-container {
+  flex: 1 1 50%;
+  text-align: center;
+}
+
+.habitaciones-section .img-container img {
+  max-width: 100%;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Text container */
+.habitaciones-section .text-container {
+  flex: 1 1 50%;
+  padding: 20px;
+}
+
+.habitaciones-section .text-container .icon {
+  margin-bottom: 15px;
+}
+
+.habitaciones-section .text-container .icon img {
+  max-width: 50px;
+}
+
+/* Buttons */
+.habitaciones-section .buttons {
+  display: flex;
+  gap: 15px;
+}
+
+.habitaciones-section .btn-primary {
+  background-color: #5a9e5b;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.habitaciones-section .btn-primary:hover {
+  background-color: #4a874a;
+}
+
+.habitaciones-section .btn-secondary {
+  background-color: transparent;
+  color: #5a9e5b;
+  border: 2px solid #5a9e5b;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 1rem;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.habitaciones-section .btn-secondary:hover {
+  background-color: #5a9e5b;
+  color: #fff;
+}
+
+#consulta {
+  background-color: #f9f9f9;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+#consulta h3 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+#consulta .form-label {
+  font-weight: bold;
+}
+
+#consulta .btn-primary {
+  background-color: #007bff;
+  border: none;
+  padding: 0.5rem 2rem;
+  font-size: 1rem;
+  cursor: pointer;
+}
+.custom-alert {
+  background-color: #f9f9f9; /* Fondo personalizado */
+  border: 2px solid; /* Borde visible */
+  border-radius: 5px;
+  padding: 10px 15px;
+  font-weight: bold;
+  text-align: center;
+}
+
+/* General Container */
+.confirmacion-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Title Section */
+.confirmacion-titulo {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #007bff;
+}
+
+.confirmacion-descripcion {
+  font-size: 1.2rem;
+  color: #555;
+}
+
+/* Card Styles */
+.confirmacion-card {
+  border: none;
+  background-color: #fff;
+  border-radius: 8px;
+}
+
+.confirmacion-header {
+  background-color: #007bff;
+  color: #fff;
+  text-align: center;
+  font-size: 1.25rem;
+  font-weight: bold;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+.confirmacion-body {
+  padding: 15px;
+  font-size: 1rem;
+  color: #333;
+}
+
+.list-group-item {
+  font-size: 1rem;
+  border: none;
+  padding: 10px 15px;
+}
+
+/* Buttons */
+.confirmacion-botones .btn {
+  margin: 5px;
+  font-size: 1rem;
+  padding: 10px 20px;
+}
+
+.btn-volver {
+  background-color: #28a745;
+  border-color: #28a745;
+}
+
+.btn-volver:hover {
+  background-color: #218838;
+  border-color: #1e7e34;
+}
+
+.btn-otra-reserva {
+  background-color: #6c757d;
+  border-color: #6c757d;
+}
+
+.btn-otra-reserva:hover {
+  background-color: #5a6268;
+  border-color: #545b62;
+}
+
+/* Estilos de las tarjetas */
+.card {
+  border-radius: 8px;
+}
+
+.card-header {
+  background-color: #007bff;
+  color: white;
+  font-weight: bold;
+}
+
+.card-body {
+  padding: 20px;
+}
+
+.table th, .table td {
+  text-align: center;
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+  background-color: #f9f9f9;
+}
+
+/* Agregar colores a las alertas */
+.alert-container .alert {
+  font-size: 1.1rem;
+  margin-bottom: 20px;
+}
+
+/* Para las alertas */
+.alert-dismissible {
+  position: relative;
+}
+
+.alert-dismissible .btn-close {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+}
+
+/* Añadir margen a la parte superior */
+.container {
+  margin-top: 50px;
+}
+
+/* Estilos adicionales */
+.table-bordered {
+  border: 1px solid #ddd;
+}
+
+.table-hover tbody tr:hover {
+  background-color: #f1f1f1;
+}
+canvas {
+  max-width: 100%;
+  height: auto;
+}
+/* Ajustar las imágenes de los gráficos para que sean responsivas */
+.grafico {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto; /* Centrar el gráfico */
+}
